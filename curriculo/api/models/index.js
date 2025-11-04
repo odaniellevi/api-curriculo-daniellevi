@@ -1,3 +1,8 @@
+import { Sequelize } from "sequelize";
+import UserModel from "./userModel.js";
+import ExperienceModel from "./experienceModel.js";
+import EducationModel from "./educationModel.js";
+
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
   logging: false,
