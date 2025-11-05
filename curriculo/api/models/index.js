@@ -1,7 +1,10 @@
 import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
 import UserModel from "./userModel.js";
 import ExperienceModel from "./experienceModel.js";
 import EducationModel from "./educationModel.js";
+
+dotenv.config();
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
