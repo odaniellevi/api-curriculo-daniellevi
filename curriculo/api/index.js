@@ -12,33 +12,23 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rota base
-app.get("/", (req, res) => res.send("API do Currículo rodando 🚀"));
+app.get("/", (req, res) => {
+  res.send(`
+    <h1>🚀 API do Currículo de Daniel Levi</h1>
+    <p>Banco conectado e rodando na Vercel!</p>
+    <ul>
+      <li><a href="/users">/users</a></li>
+      <li><a href="/experiences">/experiences</a></li>
+      <li><a href="/educations">/educations</a></li>
+    </ul>
+  `);
+});
 
-// Rotas principais
 app.use("/users", userRoute);
 app.use("/experiences", experienceRoute);
 app.use("/educations", educationRoute);
 
-const PORT = process.env.PORT || 3000;
+await sequelize.authenticate();
+console.log("Conexão com o banco estabelecida com sucesso!");
 
-async function startServer() {
-  try {
-    await sequelize.authenticate();
-    console.log("Conexão com o banco estabelecida com sucesso!");
-
-    await sequelize.sync({ alter: true });
-    console.log("Modelos sincronizados com o banco!");
-
-    const { default: seedTwoUsers } = await import("./seed/seedTwoUsers.js");
-    await seedTwoUsers();
-
-    app.listen(PORT, () => {
-      console.log(`Servidor rodando na porta ${PORT} 🚀`);
-    });
-  } catch (error) {
-    console.error("Erro ao iniciar o servidor:", error);
-  }
-}
-
-startServer();
+export default app;
