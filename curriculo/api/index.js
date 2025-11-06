@@ -28,7 +28,4 @@ app.use("/users", userRoute);
 app.use("/experiences", experienceRoute);
 app.use("/educations", educationRoute);
 
-await sequelize.authenticate();
-console.log("Conexão com o banco estabelecida com sucesso!");
-
 export default app;
