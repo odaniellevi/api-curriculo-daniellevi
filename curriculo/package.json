@@ -2,11 +2,10 @@
   "name": "api-curriculo-daniellevi",
   "version": "1.0.0",
   "description": "API REST de currículo feita com Express, Sequelize e PostgreSQL",
-  "type": "module",
-  "main": "index.js",
+  "main": "curriculo/api/index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node curriculo/api/index.js",
-    "dev": "nodemon index.js --exec babel-node"
+    "start": "nodemon curriculo/api/index.js",
+    "dev": "nodemon curriculo/api/index.js"
   },
   "keywords": [
     "node",
@@ -16,18 +15,14 @@
   "author": "Daniel Levi",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "sequelize": "^6.37.7",
     "pg": "^8.16.3",
     "pg-hstore": "^2.3.4",
-    "dotenv": "^17.2.3",
-    "cors": "^2.8.5"
+    "sequelize": "^6.37.7"
   },
   "devDependencies": {
-    "@babel/cli": "^7.28.3",
-    "@babel/core": "^7.28.4",
-    "@babel/node": "^7.28.0",
-    "@babel/preset-env": "^7.28.3",
     "nodemon": "^3.1.10"
   }
 }
