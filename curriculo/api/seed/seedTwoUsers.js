@@ -1,4 +1,4 @@
-import { User, Education, Experience } from "../models/index.js";
+const { User, Education, Experience } = require("../models/index.js");
 
 async function seedTwoUsers() {
   try {
@@ -91,4 +91,4 @@ async function seedTwoUsers() {
   }
 }
 
-export default seedTwoUsers;
+module.exports = seedTwoUsers;

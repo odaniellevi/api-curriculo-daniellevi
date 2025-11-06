@@ -1,10 +1,10 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import { sequelize } from "./models/index.js";
-import userRoute from "./routes/userRoute.js";
-import experienceRoute from "./routes/experienceRoute.js";
-import educationRoute from "./routes/educationRoute.js";
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const { sequelize } = require("./models/index.js");
+const userRoute = require("./routes/userRoute.js");
+const experienceRoute = require("./routes/experienceRoute.js");
+const educationRoute = require("./routes/educationRoute.js");
 
 dotenv.config();
 
@@ -28,4 +28,4 @@ app.use("/users", userRoute);
 app.use("/experiences", experienceRoute);
 app.use("/educations", educationRoute);
 
-export default app;
+module.exports = app;

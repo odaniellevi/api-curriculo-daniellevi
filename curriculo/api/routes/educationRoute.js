@@ -1,13 +1,13 @@
-import express from "express";
-import {
+const express = require("express");
+const router = express.Router();
+
+const {
   getAllEducations,
   getEducationById,
   createEducation,
   updateEducation,
   deleteEducation,
-} from "../controllers/educationController.js";
-
-const router = express.Router();
+} = require("../controllers/educationController.js");
 
 router.get("/", getAllEducations);
 router.get("/:id", getEducationById);
@@ -15,4 +15,4 @@ router.post("/", createEducation);
 router.put("/:id", updateEducation);
 router.delete("/:id", deleteEducation);
 
-export default router;
+module.exports = router;

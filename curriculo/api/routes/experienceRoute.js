@@ -1,13 +1,13 @@
-import express from "express";
-import {
+const express = require("express");
+const router = express.Router();
+
+const {
   getAllExperiences,
   getExperienceById,
   createExperience,
   updateExperience,
   deleteExperience,
-} from "../controllers/experienceController.js";
-
-const router = express.Router();
+} = require("../controllers/experienceController.js");
 
 router.get("/", getAllExperiences);
 router.get("/:id", getExperienceById);
@@ -15,4 +15,4 @@ router.post("/", createExperience);
 router.put("/:id", updateExperience);
 router.delete("/:id", deleteExperience);
 
-export default router;
+module.exports = router;

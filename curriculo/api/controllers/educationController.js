@@ -1,6 +1,6 @@
-import { Education, User } from "../models/index.js";
+const { Education, User } = require("../models/index.js");
 
-export const getAllEducations = async (req, res) => {
+exports.getAllEducations = async (req, res) => {
   try {
     const educations = await Education.findAll({ include: User });
     res.json(educations);
@@ -9,7 +9,7 @@ export const getAllEducations = async (req, res) => {
   }
 };
 
-export const getEducationById = async (req, res) => {
+exports.getEducationById = async (req, res) => {
   try {
     const education = await Education.findByPk(req.params.id, {
       include: User,
@@ -22,7 +22,7 @@ export const getEducationById = async (req, res) => {
   }
 };
 
-export const createEducation = async (req, res) => {
+exports.createEducation = async (req, res) => {
   try {
     const { institution, course, startDate, endDate, userId } = req.body;
     const education = await Education.create({
@@ -38,7 +38,7 @@ export const createEducation = async (req, res) => {
   }
 };
 
-export const updateEducation = async (req, res) => {
+exports.updateEducation = async (req, res) => {
   try {
     const { id } = req.params;
     const education = await Education.findByPk(id);
@@ -53,7 +53,7 @@ export const updateEducation = async (req, res) => {
   }
 };
 
-export const deleteEducation = async (req, res) => {
+exports.deleteEducation = async (req, res) => {
   try {
     const { id } = req.params;
     const education = await Education.findByPk(id);

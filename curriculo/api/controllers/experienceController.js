@@ -1,6 +1,6 @@
-import { Experience, User } from "../models/index.js";
+const { Experience, User } = require("../models/index.js");
 
-export const getAllExperiences = async (req, res) => {
+exports.getAllExperiences = async (req, res) => {
   try {
     const experiences = await Experience.findAll({ include: User });
     res.json(experiences);
@@ -9,7 +9,7 @@ export const getAllExperiences = async (req, res) => {
   }
 };
 
-export const getExperienceById = async (req, res) => {
+exports.getExperienceById = async (req, res) => {
   try {
     const experience = await Experience.findByPk(req.params.id, {
       include: User,
@@ -22,7 +22,7 @@ export const getExperienceById = async (req, res) => {
   }
 };
 
-export const createExperience = async (req, res) => {
+exports.createExperience = async (req, res) => {
   try {
     const { company, position, startDate, endDate, description, userId } =
       req.body;
@@ -40,7 +40,7 @@ export const createExperience = async (req, res) => {
   }
 };
 
-export const updateExperience = async (req, res) => {
+exports.updateExperience = async (req, res) => {
   try {
     const { id } = req.params;
     const experience = await Experience.findByPk(id);
@@ -63,7 +63,7 @@ export const updateExperience = async (req, res) => {
   }
 };
 
-export const deleteExperience = async (req, res) => {
+exports.deleteExperience = async (req, res) => {
   try {
     const { id } = req.params;
     const experience = await Experience.findByPk(id);

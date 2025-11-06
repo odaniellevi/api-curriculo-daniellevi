@@ -1,6 +1,6 @@
-import { DataTypes } from "sequelize";
+const { DataTypes } = require("sequelize");
 
-export default (sequelize) => {
+module.exports = (sequelize) => {
   const Experience = sequelize.define("Experience", {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
     company: { type: DataTypes.STRING, allowNull: false },

@@ -1,21 +1,8 @@
-import { Sequelize } from "sequelize";
-import dotenv from "dotenv";
-import UserModel from "./userModel.js";
-import ExperienceModel from "./experienceModel.js";
-import EducationModel from "./educationModel.js";
-
-dotenv.config();
-
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: "postgres",
-  logging: false,
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
-});
+const sequelize = require("../config/database.js");
+const { Sequelize } = require("sequelize");
+const UserModel = require("./userModel.js");
+const ExperienceModel = require("./experienceModel.js");
+const EducationModel = require("./educationModel.js");
 
 const User = UserModel(sequelize);
 const Experience = ExperienceModel(sequelize);
@@ -26,4 +13,9 @@ User.hasMany(Education, { foreignKey: "userId", onDelete: "CASCADE" });
 Experience.belongsTo(User, { foreignKey: "userId" });
 Education.belongsTo(User, { foreignKey: "userId" });
 
-export { sequelize, User, Experience, Education };
+module.exports = {
+  sequelize,
+  User,
+  Experience,
+  Education,
+};
