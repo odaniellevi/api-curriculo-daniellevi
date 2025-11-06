@@ -1,10 +1,9 @@
 const { Sequelize } = require("sequelize");
-const dotenv = require("dotenv");
-
-dotenv.config();
 
 if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL não foi definida nas variáveis de ambiente.");
+  throw new Error(
+    "FATAL: DATABASE_URL não foi definida nas variáveis de ambiente do Vercel."
+  );
 }
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {

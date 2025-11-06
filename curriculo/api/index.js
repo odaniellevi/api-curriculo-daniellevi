@@ -1,24 +1,28 @@
 const express = require("express");
-const app = express();
+const cors = require("cors");
+const { sequelize } = require("./models/index.js");
+const userRoute = require("./routes/userRoute.js");
+const experienceRoute = require("./routes/experienceRoute.js");
+const educationRoute = require("./routes/educationRoute.js");
 
-const dbUrl = process.env.DATABASE_URL;
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res) => {
-  console.log("Variável DATABASE_URL:", dbUrl);
-
-  if (dbUrl) {
-    res.send(`
-      <h1>API de Teste</h1>
-      <p>A variável DATABASE_URL foi encontrada!</p>
-      <p>Valor (parcial): ${dbUrl.substring(0, 20)}...</p>
-    `);
-  } else {
-    res.status(500).send(`
-      <h1>ERRO CRÍTICO</h1>
-      <p>A variável DATABASE_URL é UNDEFINED.</p>
-      <p>O Vercel não está injetando a variável de ambiente.</p>
-    `);
-  }
+  res.send(`
+    <h1>🚀 API do Currículo de Daniel Levi</h1>
+    <p>API rodando na Vercel!</p>
+    <ul>
+      <li><a href="/users">/users</a></li>
+      <li><a href="/experiences">/experiences</a></li>
+      <li><a href="/educations">/educations</a></li>
+    </ul>
+  `);
 });
+
+app.use("/users", userRoute);
+app.use("/experiences", experienceRoute);
+app.use("/educations", educationRoute);
 
 module.exports = app;
