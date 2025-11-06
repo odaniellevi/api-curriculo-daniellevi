@@ -19,14 +19,14 @@ async function seedTwoUsers() {
     await Promise.all([
       Education.bulkCreate([
         {
-          degree: "Tecnólogo em Sistemas para Internet",
+          course: "Tecnólogo em Sistemas para Internet",
           institution: "Universidade Católica de Pernambuco",
           startYear: 2024,
           endYear: 2026,
           userId: user1.id,
         },
         {
-          degree: "Curso Técnico em Informática",
+          course: "Curso Técnico em Informática",
           institution: "ETE Porto Digital",
           startYear: 2020,
           endYear: 2022,
@@ -65,7 +65,7 @@ async function seedTwoUsers() {
     await Promise.all([
       Education.bulkCreate([
         {
-          degree: "Engenharia de Software",
+          course: "Engenharia de Software",
           institution: "UFPE",
           startYear: 2022,
           endYear: null,
